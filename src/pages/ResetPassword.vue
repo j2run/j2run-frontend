@@ -65,7 +65,7 @@
           size="large"
           variant="tonal"
           :loading="state.isLoading"
-          @click="onLogin"
+          @click="onResetPassword"
         >
           Tiếp tục
         </v-btn>
@@ -74,7 +74,7 @@
           <v-btn
             variant="plain"
             class="text-blue"
-            to="/login"
+            @click="onLogout"
           >
             <v-icon icon="mdi-logout" class="mr-1"></v-icon>Đăng xuất
           </v-btn>
@@ -119,24 +119,27 @@
 <script setup lang="ts">
 import { defineAsyncComponent, reactive, shallowRef } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
-import { email, maxLength, minLength, required, sameAs } from '@vuelidate/validators'
-import { authService } from '../apis/auth';
+import { maxLength, minLength, required, sameAs } from '@vuelidate/validators'
 import { computed } from 'vue';
+import { useAuthStore } from '../stores/auth.store';
+import { userService } from '../apis/user';
+import { router } from '../router';
 
 const EffectCard = shallowRef(defineAsyncComponent(() => import('../components/EffectCard.vue')));
 const FooterV2 = shallowRef(defineAsyncComponent(() => import('../components/FooterV2.vue')));
 
+const authStore = useAuthStore();
+
 const initialState = {
   password: '',
   confirmPassword: '',
-  email: '',
 }
 
 const state = reactive({
   ...initialState,
   isLoading: false,
   visible: false,
-  registerDone: false,
+  resetDone: false,
   toastMessage: '',
   toastType: 'error' as "error" | "success" | "warning" | "info" | undefined,
 });
@@ -152,24 +155,30 @@ const rules = {
   confirmPassword: {
     required, sameAsPassword: sameAs(passwordCmp) 
   },
-  email: { required, email },
 };
 
 const v$ = useVuelidate(rules, state);
 
-const onLogin = async () => {
+const onResetPassword = async () => {
   if (v$.value.$invalid) {
     return;
   }
   state.isLoading = true;
-  await authService.register(state.email, state.password)
+  await userService.resetPassword(state.password)
     .finally(() => state.isLoading = false)
     .then(() => {
-      state.registerDone = true;
+      return authStore.reloadInfo();
+    })
+    .then(() => {
+      router.push('/manage');
     })
     .catch((e) => {
       state.toastMessage = e.response?.data?.message || 'Unknown';
       state.toastType = 'error';
     });
+}
+
+const onLogout = async () => {
+  authStore.logout();
 }
 </script>

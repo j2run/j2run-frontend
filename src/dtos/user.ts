@@ -4,4 +4,6 @@ export class UserDto {
   createdAt: string;
   updatedAt: string;
   balance: number;
+  isResetPassword: boolean;
+  isVerified: boolean;
 }

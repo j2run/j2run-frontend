@@ -4,6 +4,7 @@ import { clearToken, setAccessToken, setRefreshToken } from '../apis/axios';
 import { router } from '../router';
 import { UserDto } from '../dtos/user';
 import { LoginResponseDto } from '../dtos/auth';
+import { userService } from '../apis/user';
 
 const getUser = () => {
   try {
@@ -36,6 +37,12 @@ export const useAuthStore = defineStore({
         setRefreshToken(rs.refreshToken);
         this.user = rs.user;
         router.push('/manage');
+      },
+      async reloadInfo() {
+        console.log('reload info');
+        const user = await userService.info();
+        this.user = user;
+        localStorage.setItem('user', JSON.stringify(user));
       }
     }
 });

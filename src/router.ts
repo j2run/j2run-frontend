@@ -99,6 +99,12 @@ router.beforeEach(async (to, prev, next) => {
   const auth = useAuthStore();
   if (to.meta.auth && !auth.user) {
     next('/login');
+  } else if (auth.user && auth.user.isResetPassword) {
+    if (to.fullPath !== '/reset-password') {
+      next('/reset-password');
+    } else {
+      next();
+    }
   } else if (auth.user && to.meta.noAuth) {
     next('/manage');
   } else {
