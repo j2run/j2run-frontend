@@ -275,7 +275,6 @@ import { computed } from 'vue';
 import { formatVnd } from '../../utils/common';
 import { useRoute } from 'vue-router';
 import { usePageStore } from '../../stores/app.store';
-import { onMounted } from 'vue';
 
 const route = useRoute();
 const authStore = useAuthStore();
