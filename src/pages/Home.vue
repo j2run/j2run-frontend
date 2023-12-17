@@ -67,7 +67,7 @@
                 class="logen font-unbounded"
                 data-aos="fade-up"
               >
-                Giải pháp treo game Java J2ME dành cho game thủ.
+                Giải pháp treo game Java J2ME & Android dành cho game thủ.
               </h1>
               <v-btn
                 class="mt-2 mr-2 text-none getting-button"

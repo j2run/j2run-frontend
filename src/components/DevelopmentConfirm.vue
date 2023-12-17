@@ -10,7 +10,8 @@
         Thông báo
       </v-card-title>
       <v-card-text class="text-body-1">
-        Tài nguyên không đủ, dự kiến sẽ được cập nhật trước 15/10/2023.<br />
+        - Số  lượng <b>container J2ME</b> đã đạt tối đa.<br />
+        - Chúng tôi đang triễn khai cung cấp các <b>container Android</b>, để trải nghiệm alpha vui lòng liên hệ qua telegram!
         <v-checkbox class="ma-0" :hide-details="true" :label="'Không hiện lại trong 6 giờ'" v-model="state.isConfirm"></v-checkbox>
       </v-card-text>
       <v-card-actions>
