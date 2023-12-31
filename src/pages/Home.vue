@@ -340,7 +340,7 @@ const gotoHash = (hash: string) => {
 }
 
 const pushHash = (hash: string) => {
-  router.push({ hash });
+  router.replace({ hash });
   gotoHash(hash);
 }
 
