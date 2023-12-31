@@ -6,17 +6,25 @@
     <template v-else>
       J2Run.com
     </template>
+    <img :src="hoamaiImage" class="hoamai" />
   </span>
 </template>
 
 <style lang="scss" scoped>
 .logo {
+  position: relative;
   font-family: ADLaM_Display;
   font-weight: 400;
+}
+.hoamai {
+  position: absolute;
+  width: 40px;
+  margin-left: 5px;
 }
 </style>
 
 <script setup lang="ts">
+import hoamaiImage from '../assets/hoamai.png';
 
 const props = defineProps({
   size: {
