@@ -15,6 +15,7 @@
   position: relative;
   font-family: ADLaM_Display;
   font-weight: 400;
+  text-wrap: nowrap;
 }
 .hoamai {
   position: absolute;
