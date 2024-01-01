@@ -351,7 +351,7 @@ const onSectionIntersect = (hash: string) => {
     }
     const d0 = data[0];
     if (d0.isIntersecting) {
-      router.push({ hash });
+      router.replace({ hash });
     }
   }) as IntersectionObserverCallback
 }
