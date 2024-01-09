@@ -80,7 +80,7 @@
           </v-list-item>
         </template>
         
-        <Logout />
+        <LogoutMenuItem />
       </v-list>
     </v-navigation-drawer>
 
@@ -281,7 +281,7 @@ const authStore = useAuthStore();
 const appStore = usePageStore();
 const display = ref(useDisplay());
 const drawerTimer = ref<NodeJS.Timeout | undefined>();
-const Logout = shallowRef(defineAsyncComponent(() => import('../Logout.vue')));
+const LogoutMenuItem = shallowRef(defineAsyncComponent(() => import('../LogoutMenuItem.vue')));
 const Logo = shallowRef(defineAsyncComponent(() => import('../Logo.vue')));
 const LogoutButton = shallowRef(defineAsyncComponent(() => import('../LogoutButton.vue')));
 
@@ -293,7 +293,7 @@ const menu = [
   { text: 'Máy ảo', icon: 'mdi-cloud', to: '/manage/cloud' },
   { text: 'Điều khiển', icon: 'mdi-remote-desktop', to: '/remote-dock' },
   { text: 'Thanh toán', icon: 'mdi-receipt-text-outline', to: '/manage/payment' },
-  { text: 'Hồ sơ', icon: 'mdi-account', to: '/manage/profile' },
+  { text: 'Tài khoản', icon: 'mdi-account', to: '/manage/account' },
 ];
 
 const state = reactive({

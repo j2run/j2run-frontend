@@ -1,27 +1,16 @@
 <template>
-  <v-tooltip text="Đăng xuất">
-    <template v-slot:activator="p">
-      <v-btn
-        v-bind="{...p.props}"
-        icon="mdi-logout"
-        class="logout"
-        @click="state.dialog = true"
-      ></v-btn>
-    </template>
-  </v-tooltip>
+  <v-list-item
+    color="primary"
+    prepend-icon="mdi-logout"
+    title="Đăng xuất"
+    @click="state.dialog = true"
+  ></v-list-item>
   <logout-dialog
     :dialog="state.dialog"
     @on-close="onClose"
     @on-ok="onOk"
   ></logout-dialog>
 </template>
-<style scoped lang="scss">
-.logout {
-  margin: 0;
-  padding: 0;
-  color: #5c5c5c;
-}
-</style>
 
 <script setup lang="ts">
 import { reactive } from 'vue';

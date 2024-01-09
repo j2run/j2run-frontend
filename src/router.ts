@@ -51,8 +51,18 @@ const routes: Readonly<RouteRecordRaw[]> = [
         component: () => import('./pages/Payment.vue'),
       },
       {
-        path: 'profile',
-        component: () => import('./pages/Profile.vue'),
+        path: 'account',
+        component: () => import('./components/layouts/AccountLayout.vue'),
+        children: [
+          {
+            path: 'profile',
+            component: () => import('./pages/Account/Profile.vue'),
+          },
+          {
+            path: 'password',
+            component: () => import('./pages/Account/Password.vue'),
+          }
+        ]
       },
       {
         path: '',

@@ -136,14 +136,14 @@ const planStore = usePlanStore();
 
 const plans = computed(() => {
   return [
-    {
-      _id: "____",
-      name: "Miễn phí",
-      cpu: -1,
-      ram: 200,
-      money: 0,
-      usageSecond: 15 * 60,
-    },
+    // {
+    //   _id: "____",
+    //   name: "Miễn phí",
+    //   cpu: -1,
+    //   ram: 200,
+    //   money: 0,
+    //   usageSecond: 15 * 60,
+    // },
     ...planStore.master,
   ] as PlanDto[];
 })

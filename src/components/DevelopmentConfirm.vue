@@ -10,7 +10,7 @@
         <svg class="bg-stripes" data-name="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390.25 373.75">
           <defs></defs>
           <title>cbimage</title>
-          <path style="fill: rgb(119, 97, 223); opacity: 0.323;" class="wave-path" d="M0,0H123.21S78.08,119.5,224.35,129.28c0,0,48-2,48.64,52.07,0,2.78.14,12.52.14,12.52-.46,10.93-4.46,41.88,2.63,70.54,15,60.8,93.83,100.38,114.25,109.27.31.14.34,0,0,0H0Z" transform="translate(0 0)"></path>
+          <path style="fill: rgb(7, 0, 235); opacity: 0.323;" class="wave-path" d="M0,0H123.21S78.08,119.5,224.35,129.28c0,0,48-2,48.64,52.07,0,2.78.14,12.52.14,12.52-.46,10.93-4.46,41.88,2.63,70.54,15,60.8,93.83,100.38,114.25,109.27.31.14.34,0,0,0H0Z" transform="translate(0 0)"></path>
         </svg>
         <img :src="catImage" class="cat" />
       </v-col>
