@@ -3,7 +3,7 @@
     <v-container>
       <v-row justify="space-around">
         <v-col cols="12" :md="6">
-          © Copyright j2run.com. All Rights Reserved 
+          Bản quyền © 2023 J2Run. Bảo lưu mọi quyền.
         </v-col>
         <v-col cols="12" :md="6" class="text-caption text-right">
           version: {{ buildTime }}

@@ -93,13 +93,6 @@
   cursor: pointer;
 }
 
-.sticky-menu {
-  position: sticky;
-  top: 65px;
-  z-index: 10;
-  border-bottom: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
-  border-radius: 0;
-}
 </style>
 
 <script setup lang="ts">

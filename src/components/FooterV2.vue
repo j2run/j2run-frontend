@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <v-container>
-      © Copyright j2run.com. All Rights Reserved
+      Bản quyền © 2023 J2Run. Bảo lưu mọi quyền.
     </v-container>
   </div>
 </template>
