@@ -57,7 +57,7 @@ const helps = [
   },
   {
     question: "Có hoạt động 24/7, ngay cả khi tôi thoát khỏi bảng điều khiển?",
-    answer: "Đúng vậy. Hệ thống sẽ tiếp tục hoạt động liên tục 24/24, ngay cả khi bạn đã thoát khỏi bảng điều khiển. Bạn hoàn toàn có thể yên tâm về việc này."
+    answer: "Đúng vậy. Hệ thống sẽ tiếp tục hoạt động liên tục 24/7, ngay cả khi bạn đã thoát khỏi bảng điều khiển. Bạn hoàn toàn có thể yên tâm về việc này."
   },
   {
     question: "Hệ thống có đảm bảo an toàn cho dữ liệu không?",

@@ -61,7 +61,11 @@ const routes: Readonly<RouteRecordRaw[]> = [
           {
             path: 'password',
             component: () => import('./pages/Account/Password.vue'),
-          }
+          },
+          {
+            path: '',
+            redirect: '/manage/account/profile',
+          },
         ]
       },
       {
