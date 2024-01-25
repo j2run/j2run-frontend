@@ -9,5 +9,9 @@ export const userService = {
   resetPassword: (password: string) => {
     return axiosInstance.post('user/reset-password', { password })
       .then((rs) => rs.data);
+  },
+  changePassword: (data: { oldPassword: string, newPassword: string }) => {
+    return axiosInstance.post('user/change-password', data)
+      .then((rs) => rs.data);
   }
 }

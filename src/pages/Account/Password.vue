@@ -19,26 +19,52 @@
         <div class="ma-6 text-body-1">
           <v-row class="justify-center">
             <v-col cols="12" sm="6">
+              <v-alert
+                v-if="!!state.toastMessage"
+                class="mb-3"
+                :type="state.toastType"
+                :text="state.toastMessage"
+              ></v-alert>
               <v-text-field
+                v-model="state.oldPassword"
+                :error-messages="v$.oldPassword.$errors.map(e => e.$message as unknown as string)"
+                type="password"
                 density="compact"
-                placeholder="Mật khẩu cũ"
+                placeholder="Nhập lại mật khẩu"
                 prepend-inner-icon="mdi-lock-outline"
                 variant="outlined"
                 required
+                @click:append-inner="state.visible = !state.visible"
+                @input="v$.oldPassword.$touch"
+                @blur="v$.oldPassword.$touch"
               ></v-text-field>
               <v-text-field
+                v-model="state.password"
+                :error-messages="v$.password.$errors.map(e => e.$message as unknown as string)"
+                :append-inner-icon="state.visible ? 'mdi-eye-off' : 'mdi-eye'"
+                :type="state.visible ? 'text' : 'password'"
                 density="compact"
-                placeholder="Mật khẩu mới"
+                placeholder="Nhập mật khẩu mới"
                 prepend-inner-icon="mdi-lock-plus-outline"
                 variant="outlined"
                 required
+                @click:append-inner="state.visible = !state.visible"
+                @input="v$.password.$touch"
+                @blur="v$.password.$touch"
               ></v-text-field>
               <v-text-field
+                v-model="state.confirmPassword"
+                :error-messages="v$.confirmPassword.$errors.map(e => e.$message as unknown as string)"
+                :append-inner-icon="state.visible ? 'mdi-eye-off' : 'mdi-eye'"
+                :type="state.visible ? 'text' : 'password'"
                 density="compact"
-                placeholder="Nhập lại mật khẩu"
+                placeholder="Nhập lại mật khẩu mới"
                 prepend-inner-icon="mdi-lock-plus-outline"
                 variant="outlined"
                 required
+                @click:append-inner="state.visible = !state.visible"
+                @input="v$.confirmPassword.$touch"
+                @blur="v$.confirmPassword.$touch"
               ></v-text-field>
               <v-btn
                 block
@@ -46,6 +72,8 @@
                 color="blue"
                 size="large"
                 variant="tonal"
+                :loading="state.isLoading"
+                @click="onChangePassword"
               >
                 Thay đổi mật khẩu
               </v-btn>
@@ -64,10 +92,47 @@
 </style>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed, onMounted, reactive } from 'vue';
 import { usePageStore } from '../../stores/app.store';
+import { maxLength, minLength, required, sameAs } from '@vuelidate/validators';
+import useVuelidate from '@vuelidate/core';
+import { userService } from '../../apis/user';
 
 const appStore = usePageStore();
+
+const initialState = {
+  oldPassword: '',
+  password: '',
+  confirmPassword: '',
+}
+
+const state = reactive({
+  ...initialState,
+  isLoading: false,
+  visible: false,
+  toastMessage: '',
+  toastType: 'error' as "error" | "success" | "warning" | "info" | undefined,
+});
+
+const passwordCmp = computed(() => state.password);
+
+const rules = {
+  oldPassword: {
+    required,
+    minLength: minLength(6),
+    maxLength: maxLength(32),
+  },
+  password: {
+    required,
+    minLength: minLength(6),
+    maxLength: maxLength(32),
+  },
+  confirmPassword: {
+    required, sameAsPassword: sameAs(passwordCmp) 
+  },
+};
+
+const v$ = useVuelidate(rules, state);
 
 onMounted(() => {
   appStore.setBreadcrumbs([
@@ -81,4 +146,37 @@ onMounted(() => {
     },
   ]);
 })
+
+const clearChangePassword = () => {
+  state.oldPassword = '';
+  state.password = '';
+  state.confirmPassword = '';
+  v$.value.$reset();
+}
+
+const onChangePassword = async () => {
+  if (v$.value.$invalid) {
+    return;
+  }
+  if (state.password === state.oldPassword) {
+    state.toastMessage = 'Mật khẩu cũ và mới trùng lập.';
+    state.toastType = 'error';
+    return;
+  }
+  state.isLoading = true;
+  await userService.changePassword({
+    oldPassword: state.oldPassword,
+    newPassword: state.password,
+  })
+    .finally(() => state.isLoading = false)
+    .then(() => {
+      state.toastMessage = 'Thay đổi mật khẩu thành công.';
+      state.toastType = 'success';
+      clearChangePassword();
+    })
+    .catch((e) => {
+      state.toastMessage = e.response?.data?.message || 'Unknown';
+      state.toastType = 'error';
+    });
+}
 </script>
