@@ -25,14 +25,25 @@
 
   .xeo-top {
     position: absolute;
-    left: -20px;
-    width: calc(100% + 40px);
+    top: -50px;
+    left: 0;
     height: 100px;
-    transform-origin: 100% 50%;
-    background-color: #6b7c99;
-    transform: rotateZ(1deg);
-    top: 0px;
-    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      top: 50px;
+      left: -20px;
+      width: calc(100% + 40px);
+      height: 100px;
+      transform-origin: 100% 50%;
+      background-color: #6b7c99;
+      transform: rotateZ(1deg);
+      z-index: 1;
+    }
   }
 
 }
