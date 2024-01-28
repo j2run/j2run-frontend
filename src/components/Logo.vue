@@ -4,9 +4,9 @@
       J2
     </template>
     <template v-else>
-      J2Run.com
+      J2Run<template v-if="props.showDomain">.com</template>
     </template>
-    <img :src="hoamaiImage" class="hoamai" />
+    <img :src="hoamaiImage" class="hoamai" v-if="props.showHoamai" />
   </span>
 </template>
 
@@ -35,6 +35,14 @@ const props = defineProps({
   short: {
     type: Boolean,
     required: false,
+  },
+  showHoamai: {
+    type: Boolean,
+    default: true,
+  },
+  showDomain: {
+    type: Boolean,
+    default: true,
   }
 });
 
