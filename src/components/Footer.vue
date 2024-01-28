@@ -2,10 +2,10 @@
   <div class="footer">
     <v-container>
       <v-row>
-        <v-col md="3" class="pt-5">
+        <v-col cols="12" md="3" class="pt-5">
           <Logo :show-hoamai="false" :show-domain="false" :size="40" />
         </v-col>
-        <v-col>
+        <v-col cols="12" md="4">
           <v-list class="footer-list-custom">
             <v-list-item>
               <template v-slot:prepend>
@@ -25,7 +25,7 @@
             </v-list-item>
           </v-list>
         </v-col>
-        <v-col>
+        <v-col cols="12" md="5">
           <v-list class="footer-list-custom">
             <v-list-item :to="'/privacy-policy'">
               <v-list-item-title v-text="'Chính sách và bảo mật'"></v-list-item-title>
