@@ -14,7 +14,7 @@
           <Logo />
           <v-spacer></v-spacer>
 
-          <template v-if="display.mdAndUp">
+          <template v-if="display.lgAndUp">
             <v-btn
               v-for="item of menuItems"
               class="text-none default-button"
@@ -69,7 +69,7 @@
               >
                 Giải pháp treo game Java J2ME & Android dành cho game thủ.
               </h1>
-              <v-btn
+              <!-- <v-btn
                 class="mt-2 mr-2 text-none getting-button"
                 variant="tonal"
                 size="large"
@@ -85,6 +85,15 @@
                 data-aos="fade-up"
               >
                 Nhận 1.000vnđ trải nghiệm
+              </v-btn> -->
+              <v-btn
+                class="mt-2 mr-2 text-none getting-button"
+                variant="tonal"
+                size="large"
+                data-aos="fade-up"
+                to="/register"
+              >
+                Đăng ký ngay
               </v-btn>
             </v-col>
             <v-col cols="0" md="6" :order="1" :order-md="2">
@@ -117,6 +126,10 @@
 
       <section id="pricing"  v-intersection-observer="onSectionIntersect(HASH_PRICING)">
         <HomePricing />
+      </section>
+
+      <section id="service-bio"  v-intersection-observer="onSectionIntersect(HASH_SERVICE_BIO)">
+        <HomeServiceBio/>
       </section>
 
       <section id="faq"  v-intersection-observer="onSectionIntersect(HASH_FAQ)">
@@ -294,9 +307,11 @@ const Footer = shallowRef(defineAsyncComponent(() => import('../components/Foote
 const HomeCallToAction = shallowRef(defineAsyncComponent(() => import('../components/home/HomeCallToAction.vue')));
 const HomePricing = shallowRef(defineAsyncComponent(() => import('../components/home/HomePricing.vue')));
 const HomeFAQ = shallowRef(defineAsyncComponent(() => import('../components/home/HomeFAQ.vue')));
+const HomeServiceBio = shallowRef(defineAsyncComponent(() => import('../components/home/HomeServiceBio.vue')));
 
 const HASH_HOME = '#home';
 const HASH_ABOUT = '#about';
+const HASH_SERVICE_BIO = '#service-bio';
 const HASH_PRICING = '#pricing';
 const HASH_FAQ = '#faq';
 
@@ -310,8 +325,12 @@ const menuItems = [
     to: HASH_ABOUT
   },
   {
-    name: 'Dịch vụ',
+    name: 'Dịch vụ máy ảo',
     to: HASH_PRICING
+  },
+  {
+    name: 'Dịch vụ BIO',
+    to: HASH_SERVICE_BIO
   },
   {
     name: 'FAQ',

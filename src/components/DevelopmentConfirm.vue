@@ -97,8 +97,9 @@ import catImage from '../assets/cat.png';
 const buildTime = moment(+BUILD_TIME).format('DD/MM/YYYY HH:mm:ss');
 
 const notif = [
+  // '(Beta) Tạo web cá nhân miễn phí',
   'Số  lượng container J2ME đã đạt tối đa.',
-  'Chúng tôi đang triễn khai cung cấp các container Android, để trải nghiệm thử vui lòng liên hệ telegram: @wawahuy'
+  'Chúng tôi đang triễn khai cung cấp các container Android, để trải nghiệm thử vui lòng liên hệ telegram: @wawahuy',
 ];
 
 const state = reactive({

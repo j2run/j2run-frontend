@@ -5,7 +5,7 @@
         class="line-bottom"
         data-aos="fade-up"
       >
-        <span class="color-hb">Dịch Vụ</span> 
+        <span class="color-hb">Dịch Vụ Máy Ảo</span> 
       </div>
     </div>
     <v-row justify="center">
