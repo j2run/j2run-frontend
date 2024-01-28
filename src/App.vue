@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageLoading />
-    <CookieConfirm />
+    <!-- <CookieConfirm /> -->
     <DevelopmentConfirm />
     <router-view></router-view>
   </div>
@@ -14,7 +14,7 @@ import { onMounted } from 'vue';
 
 
 const DevelopmentConfirm = shallowRef(defineAsyncComponent(() => import('./components/DevelopmentConfirm.vue')));
-const CookieConfirm = shallowRef(defineAsyncComponent(() => import('./components/CookieConfirm.vue')));
+// const CookieConfirm = shallowRef(defineAsyncComponent(() => import('./components/CookieConfirm.vue')));
 const PageLoading = shallowRef(defineAsyncComponent(() => import('./components/PageLoading.vue')));
 const authStore = useAuthStore();
 
