@@ -2,7 +2,8 @@ import axios, { AxiosResponse } from 'axios';
 
 const REFRESH_TOKEN = 'refresh_token';
 const ACCESS_TOKEN = 'access_token';
-const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:8010/' : '/api/';
+// const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:8010/' : '/api/';
+const endpoint = '/api/';
 
 
 function refreshToken () {
