@@ -66,12 +66,16 @@ import moment from 'moment';
 import { usePageStore } from '../../stores/app.store';
 import { useAuthStore } from '../../stores/auth.store';
 import avatarImage from '../../assets/avt.jpg';
+import { isNil } from 'lodash';
 
 const appStore = usePageStore();
 const authStore = useAuthStore();
 
 const details = computed(() => {
   const user = authStore.user;
+  if (isNil(user)) {
+    return [];
+  }
   return [
     {
       name: 'Họ và tên',
