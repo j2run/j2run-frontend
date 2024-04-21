@@ -17,9 +17,10 @@ export const authService = {
       password
     }).then((rs) => rs.data);
   },
-  verify: (code: string) => {
+  verify: (code: string, email: string) => {
     return axios.post(endpoint + 'auth/verify', {
-      code
+      code,
+      email,
     })
   },
   forgotPassword: (email: string) => {

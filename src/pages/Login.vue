@@ -179,7 +179,7 @@ onMounted(() => {
   const qr = route.query;
   if (qr.code) {
     state.isLoading = true;
-    authService.verify(qr.code as string)
+    authService.verify(qr.code as string, qr.email as string)
       .finally(() => {
         state.isLoading = false;
         router.push('/login');
